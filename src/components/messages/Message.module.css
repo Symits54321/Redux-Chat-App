@@ -1,0 +1,67 @@
+.messageBox{
+    background-color: rgb(241, 237, 237);
+    height:70vh;
+    overflow-y: scroll;
+}
+messageHeader{
+    height:30px;
+}
+
+.conMesImages{
+    display:flex;
+}
+
+.conMesNames{
+    display:flex;
+}
+
+
+
+.messageBox{
+  
+}
+
+.smallMessageBox{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+   width:40%;
+   padding:8px;
+   margin:10px 5px;
+}
+
+.textmsg{
+   font-size: 0.7em;
+   margin:3px 2px;
+   text-align: left;
+   background-color: wheat;
+   padding:5px 9px;
+   border-radius: 5px;
+}
+
+.msgDetail{
+    display:flex;
+    width:auto;
+    align-items: center;
+    background: white;
+    padding:0px 5px;
+    border-radius: 20px;
+    margin-left: 3px;
+    margin-top: 3px;
+}
+
+.name{
+   margin: 0;
+   font-size: 0.7em;
+}
+
+.msgImage{
+    display:flex;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+

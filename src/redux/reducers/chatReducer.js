@@ -34,7 +34,7 @@ const initialState={
     ],
 
    
-     currUserId:"9876",
+    
 
      conversation : [
         {
@@ -78,8 +78,10 @@ const initialState={
      
     ],
 
+   currUserId:"9876",
  
    currentConversationId:'1917',
+
   
     isLoading: false,
 

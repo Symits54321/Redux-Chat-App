@@ -1,0 +1,77 @@
+*{
+    box-sizing: border-box;
+    color:rgb(131, 123, 123)
+}
+
+input:focus{
+    outline: none;
+    text-indent: 10px;
+}
+
+
+.conversationContainer{
+    display:flex;
+    flex-direction: column;
+    border:1px solid black;
+    height:100vh;
+    width:300px;
+}
+
+.searchBox{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:25px 13px;
+}
+
+
+.searchBox>input::placeholder{
+   
+    font-size: 0.8em;
+    text-indent:10px;
+}
+
+.midHeader{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 8px;
+    height:50px;
+    border:1px solid lightpink;
+}
+
+.midHeader>button{
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    border:1px solid rgb(170, 168, 168);
+}
+
+.conversationList{
+
+}
+.conListbox,.conNames{
+    display:flex;
+}
+.conListbox{
+   flex-wrap: wrap;
+   
+   width:100%;
+   border:1px solid lightgrey;
+   padding:5px 3px;
+}
+.conImages{
+  
+}
+.conNames{
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 0.8;
+}
+
+p{
+    margin-bottom: 0;
+    padding:1px 3px;
+    
+}
