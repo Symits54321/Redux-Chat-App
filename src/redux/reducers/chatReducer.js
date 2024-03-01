@@ -78,9 +78,9 @@ const initialState={
      
     ],
 
-   currUserId:"9876",
+   currUserId:"19215",
  
-   currentConversationId:'1917',
+   currentConversationId:'',
 
   
     isLoading: false,
@@ -124,7 +124,7 @@ const chatSlice = createSlice({
 
         setConversationId:(state, action)=>{
             state.currentConversationId = action.payload;
-          
+            console.log("setConversationId : - "+action.payload);
         },
 
         updateConversation:(state,action) => {

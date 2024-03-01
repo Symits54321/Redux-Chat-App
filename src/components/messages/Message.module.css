@@ -1,10 +1,22 @@
+
+.messageContainer{
+    display:flex;
+    flex-direction: column;
+    height:100vh;
+    padding-right: 10px;
+
+}
+
 .messageBox{
     background-color: rgb(241, 237, 237);
-    height:70vh;
+    max-height: 70vh;
+    flex-shrink: 1;
     overflow-y: scroll;
+  
 }
-messageHeader{
-    height:30px;
+.messageHeader{
+    height:90px;
+    padding:9px 5px;
 }
 
 .conMesImages{
@@ -17,9 +29,6 @@ messageHeader{
 
 
 
-.messageBox{
-  
-}
 
 .smallMessageBox{
     display: flex;
@@ -28,15 +37,28 @@ messageHeader{
    width:40%;
    padding:8px;
    margin:10px 5px;
+  
+  
+}
+
+.moveRight{
+    align-items: flex-end !important;
+    position:relative;
+    left:58%;
 }
 
 .textmsg{
    font-size: 0.7em;
    margin:3px 2px;
+   max-width: 90%;
    text-align: left;
    background-color: wheat;
    padding:5px 9px;
    border-radius: 5px;
+}
+
+.changebgtext{
+    background-color: aquamarine !important;
 }
 
 .msgDetail{
@@ -65,3 +87,15 @@ messageHeader{
     align-items: center;
 }
 
+.typingBox{
+    height:60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding:5px 3px;
+    margin: 9px 0px;
+}
+
+.typingBox>textarea::placeholder{
+   text-indent: 10px;
+}

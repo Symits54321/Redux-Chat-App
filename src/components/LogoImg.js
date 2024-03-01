@@ -8,9 +8,9 @@ function LogoImg({images}) {
     <Container style={{display:'flex'}}>
      
        {images.map((img)=>(
-        <div  style={{ width: 50, height: 50 ,borderRadius:50, overflow:'hidden',display:'flex',justifyContent:'center',alignItems:'center'}} >
+        <div  style={{ width: 40, height: 40 ,borderRadius:50, overflow:'hidden',display:'flex',justifyContent:'center',alignItems:'center'}} >
           <Image 
-           src={img.imageUrl} style={{ width: 60, height: 'auto' }} rounded/>
+           src={img.imageUrl} style={{ width: 50, height: 'auto' }} rounded/>
         </div>
        )
       )}
