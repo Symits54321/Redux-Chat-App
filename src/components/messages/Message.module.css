@@ -10,9 +10,10 @@
 .messageBox{
     background-color: rgb(241, 237, 237);
     max-height: 70vh;
+    max-width: 70vw;
     flex-shrink: 1;
     overflow-y: scroll;
-  
+   
 }
 .messageHeader{
     height:90px;
@@ -34,7 +35,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-   width:40%;
+   width:70%;
    padding:8px;
    margin:10px 5px;
   
@@ -44,17 +45,18 @@
 .moveRight{
     align-items: flex-end !important;
     position:relative;
-    left:58%;
+    left:28%;
 }
 
 .textmsg{
    font-size: 0.7em;
    margin:3px 2px;
-   max-width: 90%;
+   max-width: 50%;
    text-align: left;
    background-color: wheat;
    padding:5px 9px;
    border-radius: 5px;
+   word-wrap: break-word;
 }
 
 .changebgtext{
@@ -89,6 +91,7 @@
 
 .typingBox{
     height:60px;
+    width:50vw;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

@@ -1,6 +1,7 @@
 .chatpage{
   display:grid;
   grid-template-columns: 1fr 3fr;
+  max-width: 99vw;
   gap:10px;
 }
 

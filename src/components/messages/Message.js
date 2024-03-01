@@ -1,13 +1,31 @@
-
+import { useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { chatActions,chatReducer,chatSelector } from "../../redux/reducers/chatReducer";
 import style from "./Message.module.css";
 import LogoImg from "../LogoImg";
 
+
 function Message(){
 
+    const messageBoxRef = useRef(null);
+
+    const dispatch = useDispatch();
+     
     const {conversation,users,currentConversationId,currUserId} = useSelector(chatSelector);
-    
+ 
+    let populatedUsers = []
+
+    let name;
+
+
+    const scrollToBottom = () => {
+        const messageBox = document.querySelector('.messageBox');
+        if (messageBox) {
+            messageBox.scrollTop = messageBox.scrollHeight;
+        }
+    };
+
     let currentConversation= conversation.find(con => con.id === currentConversationId);
     
     if(currentConversation==null){
@@ -15,7 +33,7 @@ function Message(){
                   <h3>You dont have any currentConversation</h3>
             </div>);
     }
-    let populatedUsers = []
+   
 
      let functn=currentConversation.users.forEach((concur)=>{
        
@@ -27,7 +45,21 @@ function Message(){
 
     });
 
-    let name;
+  
+
+
+
+    const handleSendMessage = () => {
+        dispatch(chatActions.addmessage());
+ 
+        scrollToBottom();
+   
+    };
+
+    const handleTypedMessage = (e) => {
+        dispatch(chatActions.setTextMessage(e.target.value));
+    };
+
 
     return(
           
@@ -50,7 +82,7 @@ function Message(){
 
 
             {/* Messagebox  */}
-            <div className={style.messageBox}>
+            <div className={style.messageBox} ref={messageBoxRef}>
                
                {currentConversation.messages.map((mes)=>{
                    
@@ -90,8 +122,10 @@ function Message(){
             <div className={style.typingBox}>
                      
                 <textarea style={{height:50,flexGrow:0.7,padding:'8px 12px 8px 12px',fontSize:'0.8em',borderRadius:'8px', border:'1px solid lightgray',
-                }} placeholder='Type your message'></textarea>
-                <button style={{borderRadius:'8px',padding:'4px 8px', border:'1px solid lightgray'}}>Send</button>
+                }} placeholder='Type your message'
+                  onChange={(e)=>handleTypedMessage(e)}></textarea>
+                <button style={{borderRadius:'8px',padding:'4px 8px', border:'1px solid lightgray'}}
+                 onClick={()=>handleSendMessage()}>Send</button>
             </div>
         </div>
     );

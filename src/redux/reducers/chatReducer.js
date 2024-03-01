@@ -90,6 +90,8 @@ const initialState={
     fetchAgain:1,
 
     message:"",
+
+    textmessage:"",
 }
 
 
@@ -131,6 +133,30 @@ const chatSlice = createSlice({
 
             state.conversation= action.payload;
         },
+
+
+        setTextMessage:(state,action) => {
+
+            state.textmessage= action.payload;
+        },
+
+        addmessage: (state, action) => {
+           
+            const { currentConversationId, currUserId } = state;
+      
+            // Find the index of the current conversation in the state array
+            const conversationIndex = state.conversation.findIndex(conv => conv.id === currentConversationId);
+      
+            // If the conversation is not found, log an error
+            if (conversationIndex === -1) {
+              console.error(`Conversation with ID ${currentConversationId} not found.`);
+              return;
+            }
+      
+            // Add the new message to the messages array of the current conversation
+            state.conversation[conversationIndex].messages.push({ id: currUserId, data: state.textmessage });
+          }
+        
         
         
        
