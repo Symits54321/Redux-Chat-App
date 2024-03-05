@@ -8,7 +8,8 @@ import LogoImg from "../LogoImg";
 
 function Message(){
 
-    const messageBoxRef = useRef(null);
+   
+  
 
     const dispatch = useDispatch();
      
@@ -18,13 +19,8 @@ function Message(){
 
     let name;
 
-
-    const scrollToBottom = () => {
-        const messageBox = document.querySelector('.messageBox');
-        if (messageBox) {
-            messageBox.scrollTop = messageBox.scrollHeight;
-        }
-    };
+  
+   
 
     let currentConversation= conversation.find(con => con.id === currentConversationId);
     
@@ -46,13 +42,14 @@ function Message(){
     });
 
   
-
+  
+    
+   
 
 
     const handleSendMessage = () => {
+        
         dispatch(chatActions.addmessage());
- 
-        scrollToBottom();
    
     };
 
@@ -82,7 +79,7 @@ function Message(){
 
 
             {/* Messagebox  */}
-            <div className={style.messageBox} ref={messageBoxRef}>
+            <div className={style.messageBox} >
                
                {currentConversation.messages.map((mes)=>{
                    

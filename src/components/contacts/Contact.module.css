@@ -1,0 +1,67 @@
+.displaynone{
+    display: none;
+}
+
+
+.contactPopupContainer{
+    width:80vw;
+    height:70vh;
+    background:rgb(73, 73, 73);
+    padding: 30px 15px;
+
+    position:absolute;
+    top:20vh;
+    left:10vw;
+    z-index: 10;
+}
+
+.contactUsers{
+    display:grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    grid-template-columns: repeat(auto-fit, minmax(200px , 1fr));
+    /* grid-auto-flow: column; */
+    gap:5px;
+    padding: 5px;
+    height:55vh;
+    background-color:gray;
+    border-radius: 8px;
+    overflow-y: scroll;
+   
+}
+
+.contact{
+   display: flex;
+   width:100%;
+   height:60px;
+   justify-content: space-between;
+   align-items: center;
+   border:1px solid white;
+   border-radius: 3px;
+   
+}
+
+.selectcontact{
+    background-color: aquamarine;
+}
+
+
+
+.contactImage{
+   height:50px;
+   width:fit-content; 
+}
+
+.contactName{
+    color:white;
+    padding-right: 5px;
+    margin-bottom: none;
+}
+
+.textcolor{
+    color: black;
+}
+
+.createButton{
+    margin-left: auto;
+    margin-top: 20px;
+}

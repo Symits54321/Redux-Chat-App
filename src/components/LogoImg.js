@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 
 function LogoImg({images}) {
   return (
-    <Container style={{display:'flex'}}>
+    <Container style={{display:'flex', flexWrap:'wrap'}}>
      
        {images.map((img)=>(
         <div  style={{ width: 40, height: 40 ,borderRadius:50, overflow:'hidden',display:'flex',justifyContent:'center',alignItems:'center'}} >

@@ -8,6 +8,11 @@ input:focus,textarea:focus{
     text-indent: 10px;
 }
 
+.chatheading{
+    background-image: linear-gradient(rgb(119, 103, 103), rgb(51, 58, 51));
+    color: rgb(131, 172, 158);
+    padding:20px;
+}
 
 .conversationContainer{
     display:flex;
@@ -52,7 +57,10 @@ input:focus,textarea:focus{
 }
 
 .conversationList{
-
+   width:35vw;
+   height: 64vh;
+   overflow-y: scroll;
+   flex-grow: 1;
 }
 .conListbox,.conNames{
     display:flex;

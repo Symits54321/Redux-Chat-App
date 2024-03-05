@@ -33,8 +33,8 @@ const initialState={
 
     ],
 
-   
-    
+    searchInput:"",
+    showConversation:[],
 
      conversation : [
         {
@@ -92,6 +92,8 @@ const initialState={
     message:"",
 
     textmessage:"",
+
+    popupState:false,
 }
 
 
@@ -155,14 +157,65 @@ const chatSlice = createSlice({
       
             // Add the new message to the messages array of the current conversation
             state.conversation[conversationIndex].messages.push({ id: currUserId, data: state.textmessage });
-          }
+        },
         
+        setSearchInput:(state,action)=>{
         
+            state.searchInput=action.payload;
+        },
         
-       
 
+        togglePopupState: (state, action) => {
 
-     
+            state.popupState = !state.popupState;
+        },
+
+        createConversation: (state, action) => {
+            const  userIds  = action.payload;
+
+            if(userIds.length<2){
+                return;
+            }
+            
+            // Generate a unique ID for the new conversation
+            const newConversationId = Math.random().toString(36).substring(2, 9);
+
+            // Create a new conversation object
+            const newConversation = {
+                id: newConversationId,
+                users: userIds.map(id => ({ id: id })),
+                messages: [] // Initialize with an empty array of messages
+            };
+
+            // Add the new conversation to the state
+            state.conversation.push(newConversation);
+
+            // Set the current conversation ID to the newly created conversation
+            state.currentConversationId = newConversationId;
+        },
+
+        setshowConversation:(state,action)=>{
+             
+            state.showConversation = action.payload
+        },
+
+        filterConversations: (state, action) => {
+            const  searchInput  = action.payload;
+            
+             // If search input is empty, return the whole conversation
+             if (searchInput === "") {
+                state.showConversation = state.conversation;
+                return;
+            }
+            // Filter conversations based on the user name
+            state.showConversation = state.conversation.filter(conv =>
+                conv.users.some(user => {
+                    const userDetails = state.users.find(u => u.id === user.id);
+                    return userDetails && userDetails.name.toLowerCase().startsWith(searchInput.toLowerCase());
+                })
+            );
+        }
+         
 
     }
 })
