@@ -12,8 +12,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        {/* it is the main page for all chat execution  */}
         <Chatpage/>
-
       </div>
     </Provider>
   );

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 
+// this component shows rounded images of users in series
 function LogoImg({images}) {
   return (
     <Container style={{display:'flex', flexWrap:'wrap'}}>

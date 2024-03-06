@@ -78,7 +78,7 @@ const initialState={
      
     ],
 
-   currUserId:"19215",
+   currUserId:"9876",
  
    currentConversationId:'',
 

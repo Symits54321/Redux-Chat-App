@@ -19,15 +19,16 @@ function Conversation(){
       dispatch(chatActions.setshowConversation(conversation));
    }
    
-   // filter conversation only user ones 
+   // filter conversation only where current loggedin user is present 
     let userconversation = [];
-    showConversation.forEach(con => {
+               
+    showConversation.forEach(con => {  //showConversation is the bucket for search input to fill the requirest conversation according to text input
         if(con.users.some(user => user.id === currUserId)){
             if(userconversation.length==0 && !changedCurrentConversationIdState){
                 dispatch(chatActions.setConversationId(con.id));
                 setchangedCurrentConversationIdState(true);
             }
-            userconversation.push(con);
+            userconversation.push(con); // pushing in user conversation
            
         }});
 
@@ -35,8 +36,9 @@ function Conversation(){
 
    // handle search filter 
     const handleSearch =(text) =>{
-
+        //sets input text
         dispatch(chatActions.setSearchInput(text));
+        //filter according to text
         dispatch(chatActions.filterConversations(text));
 
     }
@@ -60,21 +62,24 @@ function Conversation(){
                 </button>
             </div>
             
-            {/* midHeader */}
+            {/* midHeader  --- contains popup buttion*/}
             <div className={style.midHeader}>
                 <p style={{fontSize:'0.65em',fontWeight:700}}>CONVERSATIONS</p>
+                {/* popup buttion to show contacts  */}
                 <button style={{display:'flex',paddingBottom:'4px',justifyContent:'center', alignItems:'center'}}
-                  onClick={()=>dispatch(chatActions.togglePopupState())}>+</button>
+                  onClick={()=>dispatch(chatActions.togglePopupState())}>+</button>   
             </div>
 
 
             {/* Conversation  */}
+            
             <div className={style.conversationList}>
+             {/* mapping through each conversation  */}
              {userconversation.map((con)=>{
                 
-                // Getting Users 
+                // Getting Users information
                 let conUsers = [];
-                
+                // mapping to get full user details through users(reducer) with id and saving in conUsers
                 con.users.map((x)=>{
 
                      let newuser = users.find(user => user.id === x.id);
@@ -84,14 +89,16 @@ function Conversation(){
                 })
             
                 return(
+                    // conversation list 
                     <div className={style.conListbox} onClick={()=>dispatch(chatActions.setConversationId(con.id))}>
                            <div className={style.conImages}>
-                             <LogoImg images={conUsers}/>
+                             {/* this component loads rounded Images  */}
+                             <LogoImg images={conUsers}/>    {/*Images */}
                             </div>
                             <div className={style.conNames}>
                             {conUsers.map((u,index)=>(
                                 <>
-                                <p>{u.name}</p>
+                                <p>{u.name}</p>               {/* Names */}
                                 {index !== conUsers.length - 1 && <span>, </span>}
                                 </>
                                 ))}

@@ -16,12 +16,14 @@ function Chatpage(){
         <>
     
         <div className={style.chatpage}>
-          
+        {/* popup button opens contact popup to select users and create new conversation  */}
         <Contact/>
             <div className={style.leftSection}>
+              {/* left full column comes under conversation component  */}
               <Conversation/>
             </div>
             <div className={style.rightSection}>
+              {/* right section comes under Message  */}
               <Message/>  
             </div>
         </div>

@@ -11,11 +11,14 @@ function Contact(){
     
     const dispatch = useDispatch();
     const{users,popupState,conversation,currUserId} = useSelector(chatSelector);
+
+    // contains the user selected for creating new conversation 
     const [selectedUser,setSelectedUser] = useState([currUserId]);
     
     
     let Users = users.filter( x => x.id !== currUserId);
-
+    
+    // hash code needed for id of new conversation created 
     function generateHashId(data) {
         // Generate SHA-256 hash
         const hash = SHA256(data).toString();
@@ -26,6 +29,7 @@ function Contact(){
         return hashId;
     }
 
+    // checks if chat already exists
     async function checkAlreadyExists (chatUsers){
         // iterating through each conversation
         conversation.forEach((con)=>{
@@ -49,6 +53,7 @@ function Contact(){
         return false;
     }
 
+    // needed to toogle select the users from contacts popup to create new conversation
     async function toggleSelect(id) {
         // Check if id is not present in selectedUsers, then add
         if (!selectedUser.includes(id)) {
@@ -65,17 +70,24 @@ function Contact(){
 
 
     return(
-          
+        // All Contact popup (it opens when + button right of conversation header is clicked)
+        // if popup state is true then display the contact popup   
         <div className={`${popupState ? style.contactPopupContainer : style.displaynone}`}>
+            {/* div containing users  */}
             <div className={style.contactUsers} >
+                {/* mapping through each users  */}
               {Users.map((user)=>{
-
+                //  it checks that if you have clicked/selected the user for adding in conversation or not 
                 let selected = selectedUser.includes(user.id);
                   
                   return(
+                        // Each Contact 
+                        //   if user is selected then background will be green 
                           <div className={`${style.contact} ${ selected ? style.selectcontact : ''}`}
-                          onClick={() => toggleSelect(user.id)}>
+                          onClick={() => toggleSelect(user.id)}> {/* onclick toogle the selection of user  */}
+                                  {/* image of the user  */}
                                  <img className={style.contactImage} src={user.imageUrl} />
+                                 {/* name of the user  */}
                                  <p className={`${style.contactName} ${ selected ? style.textcolor : ''}`} 
                                   >{user.name}</p>
                           </div>
@@ -84,6 +96,7 @@ function Contact(){
               })}
 
           </div>
+          {/* three buttons create , clear , exit  */}
           <button className={style.createButton}
            onClick={()=>dispatch(chatActions.createConversation(selectedUser))}>Create Conversation</button>
            <button className={style.createButton} onClick={()=>setSelectedUser([currUserId])}>Clear</button>
