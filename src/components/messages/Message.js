@@ -19,7 +19,16 @@ function Message(){
 
     let name;
 
+    const messageEnd = useRef(null);
+
+    // handles when message to scroll down
   
+    useEffect( () => {
+        if(conversation && conversation.length>0){
+          messageEnd.current?.scrollIntoView();
+        }
+  
+      },[conversation]);
    
     // current Conversation contain that conversation whose messages is to be shown in message box
     let currentConversation= conversation.find(con => con.id === currentConversationId);
@@ -53,10 +62,13 @@ function Message(){
         dispatch(chatActions.addmessage());
    
     };
+
   // handles when someting is typed in the typing box (i.e. message)
     const handleTypedMessage = (e) => {
         dispatch(chatActions.setTextMessage(e.target.value));
     };
+
+  
 
 
     return(
@@ -111,6 +123,7 @@ function Message(){
                 })}
 
 
+            <div ref={messageEnd} className="MessageEnd"></div>
             </div>
 
 
