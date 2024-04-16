@@ -4,6 +4,8 @@ import { useSelector,useDispatch } from "react-redux";
 import { chatActions,chatReducer,chatSelector } from "../../redux/reducers/chatReducer";
 import style from "./Message.module.css";
 import LogoImg from "../LogoImg";
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 
 function Message(){
@@ -13,9 +15,11 @@ function Message(){
 
     const dispatch = useDispatch();
      
-    const {conversation,users,currentConversationId,currUserId} = useSelector(chatSelector);
+    const {conversation,users,currentConversationId,currUserId,textmessage} = useSelector(chatSelector);
  
-    let populatedUsers = []
+    let populatedUsers = [];
+
+    const [showEmojiPicker,setshowEmojiPicker]=useState(false) // to manage the visibility of the emoji picker
 
     let name;
 
@@ -28,7 +32,7 @@ function Message(){
           messageEnd.current?.scrollIntoView();
         }
   
-      },[conversation]);
+      },[conversation,currentConversationId]);
    
     // current Conversation contain that conversation whose messages is to be shown in message box
     let currentConversation= conversation.find(con => con.id === currentConversationId);
@@ -67,6 +71,22 @@ function Message(){
     const handleTypedMessage = (e) => {
         dispatch(chatActions.setTextMessage(e.target.value));
     };
+
+  // EMOJI 
+ 
+
+    
+
+
+  const toggleEmojiPicker = () => {
+    setshowEmojiPicker(prevState => !prevState); // Using prevState to access the previous state
+}
+
+const handleEmojiSelect = (emoji) => {
+    console.log("emoji :- "+emoji);
+    // Do something with the selected emoji, such as inserting it into the textarea
+    dispatch(chatActions.setTextMessage(textmessage + emoji.native));
+}  
 
   
 
@@ -131,8 +151,34 @@ function Message(){
             <div className={style.typingBox}>
                   {/* TEXT area  */}
                 <textarea style={{height:'100%',flexGrow:1,padding:'8px 12px 8px 12px',fontSize:'0.8em',borderRadius:'8px', border:'1px solid lightgray',
-                }} placeholder='Type your message'
+                }} placeholder='Type your message' value={textmessage}
                   onChange={(e)=>handleTypedMessage(e)}></textarea>
+
+                   {/* EMOJI button */}
+                    <button 
+                        style={{
+                            height: '100%',background: 'none',border: 'none',
+                            cursor: 'pointer'
+                        }} 
+                        onClick={()=>toggleEmojiPicker()}
+                    >
+                        😀
+                    </button>
+
+                    {/* Emoji Picker */}
+                        {showEmojiPicker && (
+                            <div style={{ position: 'absolute', bottom: '80px', right: 0 }}>
+                                <Picker
+                                    onEmojiSelect={handleEmojiSelect}
+                                    emojiSize={24}
+                                    perLine={20}
+                                    showPreview={false}
+                                    showSkinTones={false}
+                                    autoFocus={true}
+                                />
+                            </div>
+                        )}
+
                   {/* SEND button */}
                 <button style={{height:'100%',background:'green',color:'white',borderRadius:'8px',padding:'4px 8px', border:'1px solid lightgray'}}
                  onClick={()=>handleSendMessage()}>Send</button>

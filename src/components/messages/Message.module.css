@@ -12,7 +12,7 @@
     background-color: rgb(241, 237, 237);
     
     max-height: 70vh;
-    max-width: 70vw;
+    width:auto;
      flex-shrink: 1; 
      flex-grow: 1;
     overflow-y: scroll;
