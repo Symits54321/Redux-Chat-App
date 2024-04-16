@@ -62,8 +62,12 @@ function Message(){
 
    // handles when send button is clicked
     const handleSendMessage = () => {
-        
-        dispatch(chatActions.addmessage());
+
+        if(textmessage.length>0){
+            dispatch(chatActions.addmessage());
+            dispatch(chatActions.setTextMessage(''));
+            setshowEmojiPicker(false);
+        }
    
     };
 
