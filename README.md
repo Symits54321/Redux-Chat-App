@@ -2,7 +2,7 @@
 
 
 
-![Homepage](./screenshot/homepage.JPG)
+![Homepage](./screenshot/homepage_new.JPG)
 
 
 Welcome to the React Redux-chat-app  application! This project is built using the React framework for the frontend and Redux for state management, offering a seamless user experience for managing chat conversation. With the power of React's virtual DOM and Redux's centralized state management, users can perform creating conversation, adding messages like operations without any page reloading. It is only frontend app .. you need to add server , currenly i have added dummy data of users and conversation in chat reducer
