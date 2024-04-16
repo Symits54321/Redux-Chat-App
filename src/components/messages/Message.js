@@ -92,6 +92,13 @@ const handleEmojiSelect = (emoji) => {
     dispatch(chatActions.setTextMessage(textmessage + emoji.native));
 }  
 
+const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); // Prevent default behavior of Enter key (new line)
+        handleSendMessage();
+    }
+}
+
   
 
 
@@ -155,7 +162,7 @@ const handleEmojiSelect = (emoji) => {
             <div className={style.typingBox}>
                   {/* TEXT area  */}
                 <textarea style={{height:'100%',flexGrow:1,padding:'8px 12px 8px 12px',fontSize:'0.8em',borderRadius:'8px', border:'1px solid lightgray',
-                }} placeholder='Type your message' value={textmessage}
+                }} placeholder='Type your message' value={textmessage} onKeyDown={handleKeyDown}
                   onChange={(e)=>handleTypedMessage(e)}></textarea>
 
                    {/* EMOJI button */}
@@ -185,7 +192,7 @@ const handleEmojiSelect = (emoji) => {
 
                   {/* SEND button */}
                 <button style={{height:'100%',background:'green',color:'white',borderRadius:'8px',padding:'4px 8px', border:'1px solid lightgray'}}
-                 onClick={()=>handleSendMessage()}>Send</button>
+                 onClick={()=>handleSendMessage()} >Send</button>
             </div>
         </div>
     );
