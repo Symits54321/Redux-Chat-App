@@ -66,7 +66,14 @@ function Contact(){
         }
     }
     
+    async function createBtnHandler(id) {
 
+        dispatch(chatActions.createConversation(selectedUser));
+        setSelectedUser([currUserId]);
+        dispatch(chatActions.togglePopupState());
+
+
+    }
 
 
     return(
@@ -98,7 +105,7 @@ function Contact(){
           </div>
           {/* three buttons create , clear , exit  */}
           <button className={style.createButton}
-           onClick={()=>dispatch(chatActions.createConversation(selectedUser))}>Create Conversation</button>
+           onClick={()=> createBtnHandler()}>Create Conversation</button>
            <button className={style.createButton} onClick={()=>setSelectedUser([currUserId])}>Clear</button>
            <button className={style.cancelButton} onClick={()=>dispatch(chatActions.togglePopupState())}>X</button>
         </div>

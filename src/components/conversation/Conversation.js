@@ -91,12 +91,16 @@ function Conversation(){
                 })
             
                 return(
-                    // conversation list 
-                    <div className={style.conListbox} onClick={()=>dispatch(chatActions.setConversationId(con.id))}>
+                    // each conversation list 
+                    <div className={currentConversationId === con.id ? `${style.conListbox} ${style.activated}` : style.conListbox} 
+                     onClick={() => dispatch(chatActions.setConversationId(con.id))}>
+
                            <div className={style.conImages}>
+                             {/* IMAGES  */}
                              {/* this component loads rounded Images  */}
                              <LogoImg images={conUsers}/>    {/*Images */}
                             </div>
+                            {/* NAMES  */}
                             <div className={style.conNames}>
                             {conUsers.map((u,index)=>(
                                 <>

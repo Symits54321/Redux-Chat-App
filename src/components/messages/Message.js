@@ -129,12 +129,12 @@ function Message(){
 
             {/* TypingBox  */}
             <div className={style.typingBox}>
-                  {/* text area  */}
-                <textarea style={{height:50,flexGrow:0.7,padding:'8px 12px 8px 12px',fontSize:'0.8em',borderRadius:'8px', border:'1px solid lightgray',
+                  {/* TEXT area  */}
+                <textarea style={{height:'100%',flexGrow:1,padding:'8px 12px 8px 12px',fontSize:'0.8em',borderRadius:'8px', border:'1px solid lightgray',
                 }} placeholder='Type your message'
                   onChange={(e)=>handleTypedMessage(e)}></textarea>
                   {/* SEND button */}
-                <button style={{borderRadius:'8px',padding:'4px 8px', border:'1px solid lightgray'}}
+                <button style={{height:'100%',background:'green',color:'white',borderRadius:'8px',padding:'4px 8px', border:'1px solid lightgray'}}
                  onClick={()=>handleSendMessage()}>Send</button>
             </div>
         </div>
