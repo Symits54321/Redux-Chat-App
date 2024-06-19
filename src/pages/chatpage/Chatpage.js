@@ -1,12 +1,12 @@
 
 import style from "./Chatpage.module.css"
-import Conversation from "../components/conversation/Conversation";
-import Message from "../components/messages/Message";
-import Contact from "../components/contacts/Contact";
+import Conversation from "../../components/conversation/Conversation";
+import Message from "../../components/messages/Message";
+import Contact from "../../components/contacts/Contact";
 
 import { useDispatch } from "react-redux";
 
-import { chatReducer,chatActions,chatSelector } from "../redux/reducers/chatReducer";
+import { chatReducer,chatActions,chatSelector } from "../../redux/reducers/chatReducer";
 
 function Chatpage(){
 

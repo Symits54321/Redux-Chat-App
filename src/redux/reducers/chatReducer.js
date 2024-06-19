@@ -223,7 +223,7 @@ const chatSlice = createSlice({
 
 
 // export the chats reducer function and action creators here
-export const chatReducer=chatSlice.reducer;
+export const chatReducer = chatSlice.reducer;
 
 export const chatActions = chatSlice.actions;
 
